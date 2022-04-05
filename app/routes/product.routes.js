@@ -1,5 +1,4 @@
 const express = require("express");
-const experss = require("express");
 const product = require("../controllers/product.controller");
 
 module.exports = app => {
