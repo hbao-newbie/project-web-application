@@ -15,6 +15,7 @@ exports.createProduct = async (req, res, next) => {
         codeProduct: req.body.codeProduct,
         description: req.body.description,
         imgProduct: req.body.imgProduct,
+        costProduct: req.body.costProduct,
         status: String(req.body.status).toLowerCase() === "true",
     });
 
@@ -61,7 +62,7 @@ exports.findOneProduct = async (req, res, next) => {
     }
 
     if (!document) {
-        return next(new BadRequestError(404, "Contact not found"));
+        return next(new BadRequestError(404, "Product not found"));
     }
 
     return res.send(document);

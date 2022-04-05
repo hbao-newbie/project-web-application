@@ -9,6 +9,7 @@ const products = mongoose.Schema(
         codeProduct: String,
         description: String,
         imgProduct: String,
+        costProduct: Number,
         status: Boolean,
     },
     { timestamps: true },
