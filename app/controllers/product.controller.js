@@ -97,7 +97,7 @@ exports.updateProduct = async (req, res, next) => {
     return res.send({ message: "Product was update successfully",});
 };
 
-// Delete a produve with the specified id in the request
+// Delete a product with the specified id in the request
 exports.deleteProduct = async (req, res) => {
     const condition = {
         _id: req.params.id,
