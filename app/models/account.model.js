@@ -10,6 +10,10 @@ const account = mongoose.Schema(
             type: String,
             require: [true, "Password is require"],
         },
+        nameUser: {
+            type: String,
+            require: [true, "Name user is require"],
+        },
         phoneNumber: Number,
         email: String,
         address: String,

@@ -13,6 +13,7 @@ exports.createAccount = async (req, res, next) => {
     const account = new Account({
         nameAccount: req.body.nameAccount,
         passAccount: req.body.passAccount,
+        nameUser: req.body.nameUser,
         phoneNumber: req.body.phoneNumber,
         email: req.body.email,
         address: req.body.address,
