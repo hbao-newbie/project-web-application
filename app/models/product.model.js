@@ -9,10 +9,7 @@ const products = mongoose.Schema(
         codeProduct: String,
         description: String,
         imgProduct: String,
-        costProduct: {
-            type: Number,
-            required: [true, "Product cost is required"],
-        },
+        costProduct: Number,
         status: Boolean,
     },
     { timestamps: true },

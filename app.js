@@ -1,17 +1,13 @@
 const experss = require("express");
 const cors = require("cors");
 const setupProductRoutes = require("./app/routes/product.routes");
-const setupAccountRoutes = require("./app/routes/account.routes");
 const { BadRequestError, errorHandler } = require("./app/errors");
 
 const app = experss();
 
 app.use(cors());
-
-//
 app.use(experss.json());
 
-//
 app.use(experss.urlencoded({ extended: true }));
 
 // simple route
@@ -20,7 +16,6 @@ app.get("/",(req, res) => {
 });
 
 setupProductRoutes(app);
-setupAccountRoutes(app);
 
 // handle 404 response
 app.use((req, res, next) => {
