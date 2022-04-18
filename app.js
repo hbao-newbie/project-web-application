@@ -1,21 +1,21 @@
 const experss = require("express");
 const cors = require("cors");
-const setupProductRoutes = require("./app/routes/product.routes");
-const { BadRequestError, errorHandler } = require("./app/errors");
+const productsRouter = require("./app/routes/product.routes");
+const authRouter = require("./app/routes/auth.routes");
+const BadRequestError = require("./app/errors");
 
 const app = experss();
 
 app.use(cors());
 app.use(experss.json());
 
-app.use(experss.urlencoded({ extended: true }));
-
 // simple route
 app.get("/",(req, res) => {
-    res.json({ message: "Welcome to contact book application." });
+    res.json({ message: "Welcome to product application." });
 });
 
-setupProductRoutes(app);
+app.use("/api/products", productsRouter);
+app.use("/api/auth", authRouter);
 
 // handle 404 response
 app.use((req, res, next) => {
@@ -24,10 +24,10 @@ app.use((req, res, next) => {
 });
 
 // define erro-handling middleware last, after other app.use() and routes calls
-app.use((err, req, res, next, error) => {
-    // Middleware xử lý lỗi tập trung.
-    // Trong các đoạn code xử lý ở các route, gọi next(error) sẽ chuyển về middleware xử lý lỗi này
-    errorHandler.handleError(error, res);
+app.use((error, req, res, next) => {
+    return res.status(error.statusCode || 500).json({
+        message: error.message || "Internal server error",
+    })
 });
 
 module.exports = app;

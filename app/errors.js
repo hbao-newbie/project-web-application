@@ -6,21 +6,4 @@ class BadRequestError extends Error {
     }
 };
 
-class ErrorHandler {
-    constructor() {
-        this.handleError = (error, responseStream = null) => {
-            if (responseStream) {
-                responseStream.status(error.statusCode || 500).json({
-                    message: error.message || "Internal Server Error",
-                });
-            } else {
-                console.log(error);
-            }
-        };
-    }
-};
-
-module.exports = {
-    BadRequestError,
-    ErrorHandler: new ErrorHandler(),
-}
+module.exports = BadRequestError;

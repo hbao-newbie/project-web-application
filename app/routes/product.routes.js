@@ -1,26 +1,18 @@
-const express = require("express");
-const product = require("../controllers/product.controller");
+const experss = require("express");
+const Product = require("../controllers/product.controller");
 
-module.exports = app => {
-    const router = express.Router();
+const router = experss.Router();
 
-    // Create a new product
-    router.post("/", product.createProduct);
+router
+    .route("/")
+    .get(Product.findAll)
+    .post(Product.create)
+    .delete(Product.deleteAll);
 
-    // Retrieve all products
-    router.get("/", product.findAllProduct);
+router
+    .route("/:id")
+    .get(Product.findOne)
+    .put(Product.update)
+    .delete(Product.delete);
 
-    // Retrieve a single product with id
-    router.get("/:id", product.findOneProduct);
-
-    // Update a product with id
-    router.put("/:id", product.updateProduct);
-
-    // Delete a product with id
-    router.delete("/:id", product.deleteProduct);
-
-    // Delete all products
-    router.delete("/", product.deleteAllProduct);
-    
-    app.use("/api/products", router);
-};
+module.exports = router;
