@@ -1,4 +1,4 @@
-const { BadRequestError } = require("../errors");
+const BadRequestError = require("../errors");
 const MongoDB = require("../utils/mongodb.util");
 const User = require("../services/user.service");
 
