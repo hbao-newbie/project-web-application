@@ -9,9 +9,6 @@ class CartService {
     async create(payload) {
         const cart = {
             cartItem: payload.cartItem,
-            cartAddress: payload.cartAddress,
-            cartPhone: payload.cartPhone,
-            status: payload.status,
             ownerId: this.ownerId,
         };
 
