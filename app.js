@@ -2,6 +2,7 @@ const experss = require("express");
 const cors = require("cors");
 const productsRouter = require("./app/routes/product.routes");
 const authRouter = require("./app/routes/auth.routes");
+const cartRouter = require("./app/routes/cart.routes");
 const BadRequestError = require("./app/errors");
 
 const app = experss();
@@ -14,6 +15,7 @@ app.get("/",(req, res) => {
     res.json({ message: "Welcome to product application." });
 });
 
+app.use("/api/carts", cartRouter);
 app.use("/api/products", productsRouter);
 app.use("/api/auth", authRouter);
 
